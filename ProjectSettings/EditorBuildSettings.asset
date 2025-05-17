@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/NawafMainMenu.unity
+    guid: d57d6f094065b414d9edc89535659793
+  - enabled: 1
+    path: Assets/Nawaf.unity
+    guid: 55d53e433621dc44b8f58ee1adff9896
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects:
