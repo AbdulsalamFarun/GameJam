@@ -1,32 +1,42 @@
 using UnityEngine;
+using UnityEngine.AI;
 using System.Collections.Generic;
 
 public class Pedestrian : MonoBehaviour
 {
+    private NavMeshAgent agent;
     private List<Transform> path;
     private int currentIndex = 0;
-    public float speed = 2f;
 
     public void SetPath(List<Transform> waypoints)
     {
         path = waypoints;
-        currentIndex = 0;
-        transform.position = path[0].position;
+        if (path == null || path.Count < 2) return;
+
+        currentIndex = 1;
+        Vector3 startPos = path[0].position;
+        startPos.y = 0.1f; // Keep it on NavMesh
+        transform.position = startPos;
+
+        agent = GetComponent<NavMeshAgent>();
+        agent.isStopped = false;
+        agent.SetDestination(path[currentIndex].position);
     }
 
     void Update()
     {
         if (path == null || currentIndex >= path.Count) return;
 
-        Transform target = path[currentIndex];
-        transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
-
-        if (Vector3.Distance(transform.position, target.position) < 0.1f)
+        if (!agent.pathPending && agent.remainingDistance < 0.2f)
         {
             currentIndex++;
             if (currentIndex >= path.Count)
             {
-                Destroy(gameObject); // Pedestrian disappears
+                Destroy(gameObject);
+            }
+            else
+            {
+                agent.SetDestination(path[currentIndex].position);
             }
         }
     }
