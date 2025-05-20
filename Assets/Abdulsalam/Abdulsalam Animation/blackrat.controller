@@ -71,9 +71,6 @@ AnimatorStateMachine:
     m_State: {fileID: 5059948445806464038}
     m_Position: {x: 60, y: 130, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 446763096711760522}
-    m_Position: {x: 793.9527, y: 445.76422, z: 0}
-  - serializedVersion: 1
     m_State: {fileID: 8547826019582787982}
     m_Position: {x: 100, y: 40, z: 0}
   - serializedVersion: 1
@@ -294,32 +291,6 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
---- !u!1102 &446763096711760522
-AnimatorState:
-  serializedVersion: 6
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Mammals|run_start_A
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 4546454895653609254, guid: 6bdcb86fb2ce28b4cbe88f8daac5d94f, type: 3}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
 --- !u!1102 &721605213241076489
 AnimatorState:
   serializedVersion: 6
