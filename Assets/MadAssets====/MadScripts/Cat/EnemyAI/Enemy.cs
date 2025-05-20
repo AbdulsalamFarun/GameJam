@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
     [Header("Detection Settings")]
     public float viewRadius = 10f;
     public float viewAngle = 90f;
-    public Transform eyePosition; // where the enemy "sees" from
+    public Transform eyePosition;
     public LayerMask playerMask;
     public LayerMask obstacleMask;
 
@@ -14,14 +14,17 @@ public class Enemy : MonoBehaviour
     public float patrolSpeed = 2f;
     public float chaseSpeed = 5f;
 
-    [HideInInspector] public Transform playerTransform;
+    
 
     [Header("Chase Behavior")]
     public bool canGiveUp = true;
     public bool startChasing = false;
 
+    [HideInInspector] public Transform playerTransform;
     [HideInInspector] public NavMeshAgent agent;
     [HideInInspector] public Animator animator;
+
+    
 
     public float patrolRange = 10f;
     public float minIdleTime = 2f;
@@ -85,7 +88,7 @@ public class Enemy : MonoBehaviour
         float distanceToPlayer = Vector3.Distance(eyePosition.position, playerTransform.position);
 
         // 1. Check close detection sphere
-        if (distanceToPlayer < 10f) // small radius auto-detect
+        if (distanceToPlayer < 7f) // small radius auto-detect
         {
             if (!Physics.Raycast(eyePosition.position, dirToPlayer, distanceToPlayer, obstacleMask))
             {
@@ -116,7 +119,7 @@ public class Enemy : MonoBehaviour
 
         // Draw sphere to represent detection range (the small detection sphere)
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(eyePosition.position, 10f); // Adjust 3f for your sphere radius
+        Gizmos.DrawWireSphere(eyePosition.position, 7f); // Adjust 3f for your sphere radius
     }
 
     void OnDrawGizmos() //RayCast Gizmo
