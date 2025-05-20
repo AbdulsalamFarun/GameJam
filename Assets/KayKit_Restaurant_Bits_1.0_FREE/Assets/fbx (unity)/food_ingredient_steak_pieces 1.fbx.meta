@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: bfc6025ad9429eb4fac658b3a88aa105
+guid: e8d92b488d6e6b34ab53a2acc1fc716a
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: restaurant
-    second: {fileID: 2100000, guid: f2a6b2a6975d34243b4bdb966670bf25, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
