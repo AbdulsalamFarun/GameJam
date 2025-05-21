@@ -1,21 +1,18 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
 public class RatController : MonoBehaviour
 {
     public float walkSpeed = 3f;
     public float runSpeed = 6f;
-    public float jumpForce = 5f;
-    public Transform groundCheck;
-    public float groundCheckRadius = 0.3f;
-    public LayerMask groundLayer;
     public Transform cameraTransform;
     public Animator animator;
+    public float rotationSpeed = 10f;
+    public float raycastDistance = 1.5f;
 
     private Rigidbody rb;
-    private bool isGrounded;
     private Vector3 moveInput;
     private float currentSpeed;
+    private bool isRunning;
 
     void Start()
     {
@@ -24,14 +21,9 @@ public class RatController : MonoBehaviour
 
     void Update()
     {
-        // Ground check
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundCheckRadius, groundLayer);
-
-        // Input
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
 
-        // Calculate direction relative to camera
         Vector3 camForward = cameraTransform.forward;
         Vector3 camRight = cameraTransform.right;
         camForward.y = 0;
@@ -41,32 +33,36 @@ public class RatController : MonoBehaviour
 
         moveInput = (camForward * v + camRight * h).normalized;
 
-        // Set running
-        bool isRunning = Input.GetKey(KeyCode.LeftShift);
-        animator.SetBool("IsRunning", isRunning);
-
-        // Set current speed
+        isRunning = Input.GetKey(KeyCode.LeftShift);
         currentSpeed = isRunning ? runSpeed : walkSpeed;
 
-        // Animator speed parameter (for transitions)
-        float movementAmount = moveInput.magnitude;
-        animator.SetFloat("Speed", movementAmount);
-
-        
+        // Animator
+        animator.SetFloat("Speed", moveInput.magnitude);
+        animator.SetBool("IsRunning", isRunning);
     }
 
     void FixedUpdate()
     {
-        // Move the player
-        Vector3 moveVelocity = moveInput * currentSpeed;
-        Vector3 newPosition = rb.position + moveVelocity * Time.fixedDeltaTime;
-        rb.MovePosition(newPosition);
-
-        // Optional: face move direction
-        if (moveInput != Vector3.zero)
+        // Raycast to detect slope normal
+        Ray ray = new Ray(transform.position + Vector3.up * 0.2f, Vector3.down);
+        if (Physics.Raycast(ray, out RaycastHit hit, raycastDistance))
         {
-            Quaternion toRotation = Quaternion.LookRotation(moveInput, Vector3.up);
-            rb.rotation = Quaternion.RotateTowards(rb.rotation, toRotation, 720 * Time.fixedDeltaTime);
+            // Get the slope normal
+            Vector3 slopeNormal = hit.normal;
+
+            // Project movement on the slope
+            Vector3 moveDirection = Vector3.ProjectOnPlane(moveInput, slopeNormal).normalized;
+
+            // Move the character
+            Vector3 moveVelocity = moveDirection * currentSpeed;
+            rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
+
+            // Rotate character to match movement direction
+            if (moveDirection != Vector3.zero)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(moveDirection, slopeNormal);
+                rb.rotation = Quaternion.Slerp(rb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
+            }
         }
     }
 }
