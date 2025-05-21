@@ -993,9 +993,9 @@ MonoBehaviour:
     m_Bits: 4
   patrolSpeed: 2
   chaseSpeed: 5
-  playerTransform: {fileID: 0}
   canGiveUp: 1
   startChasing: 0
+  playerTransform: {fileID: 0}
   agent: {fileID: 0}
   animator: {fileID: 0}
   patrolRange: 10
@@ -2472,7 +2472,7 @@ GameObject:
   - component: {fileID: 2002059556}
   - component: {fileID: 2002059557}
   m_Layer: 0
-  m_Name: MadCat
+  m_Name: Chieff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2627,8 +2627,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2670ada2895abb6409624afbaeee66b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewRadius: 10
-  viewAngle: 90
+  viewRadius: 5
+  viewAngle: 70
   eyePosition: {fileID: 612375439}
   playerMask:
     serializedVersion: 2
@@ -2638,9 +2638,9 @@ MonoBehaviour:
     m_Bits: 4
   patrolSpeed: 2
   chaseSpeed: 5
-  playerTransform: {fileID: 0}
   canGiveUp: 1
   startChasing: 0
+  playerTransform: {fileID: 0}
   agent: {fileID: 0}
   animator: {fileID: 0}
   patrolRange: 10
