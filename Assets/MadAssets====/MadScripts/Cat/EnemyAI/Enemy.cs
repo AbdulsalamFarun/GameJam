@@ -88,7 +88,7 @@ public class Enemy : MonoBehaviour
         float distanceToPlayer = Vector3.Distance(eyePosition.position, playerTransform.position);
 
         // 1. Check close detection sphere
-        if (distanceToPlayer < 7f) // small radius auto-detect
+        if (distanceToPlayer < 2f) // small radius auto-detect
         {
             if (!Physics.Raycast(eyePosition.position, dirToPlayer, distanceToPlayer, obstacleMask))
             {
@@ -119,7 +119,7 @@ public class Enemy : MonoBehaviour
 
         // Draw sphere to represent detection range (the small detection sphere)
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(eyePosition.position, 7f); // Adjust 3f for your sphere radius
+        Gizmos.DrawWireSphere(eyePosition.position, 2f); // Adjust 3f for your sphere radius
     }
 
     void OnDrawGizmos() //RayCast Gizmo
