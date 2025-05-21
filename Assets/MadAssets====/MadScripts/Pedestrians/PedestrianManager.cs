@@ -4,7 +4,8 @@ using System.Collections.Generic;
 
 public class PedestrianManager : MonoBehaviour
 {
-    public GameObject pedestrianPrefab;
+    [Header("Pedestrian Prefabs")]
+    public GameObject[] pedestrianPrefabs; // Assign 3 prefabs here
 
     [Header("Spawn Timing")]
     public float minSpawnInterval = 2f;
@@ -24,18 +25,21 @@ public class PedestrianManager : MonoBehaviour
     {
         while (true)
         {
-            SpawnPedestrian();
+            SpawnRandomPedestrian();
 
             float waitTime = Random.Range(minSpawnInterval, maxSpawnInterval);
             yield return new WaitForSeconds(waitTime);
         }
     }
 
-    void SpawnPedestrian()
+    void SpawnRandomPedestrian()
     {
-        if (spawnPoint == null || pedestrianPrefab == null) return;
+        if (spawnPoint == null || pedestrianPrefabs == null || pedestrianPrefabs.Length == 0) return;
 
-        GameObject pedestrian = Instantiate(pedestrianPrefab, spawnPoint.position, spawnPoint.rotation);
+        int randomIndex = Random.Range(0, pedestrianPrefabs.Length);
+        GameObject prefab = pedestrianPrefabs[randomIndex];
+
+        GameObject pedestrian = Instantiate(prefab, spawnPoint.position, spawnPoint.rotation);
         Pedestrian pedScript = pedestrian.GetComponent<Pedestrian>();
 
         List<Transform> fullPath = new List<Transform>();
