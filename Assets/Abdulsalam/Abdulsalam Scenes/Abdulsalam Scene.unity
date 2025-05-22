@@ -3630,7 +3630,11 @@ MonoBehaviour:
   isNotCollected: 1
   InventoryItems: []
   inventorySlotImages:
-  - {fileID: 0}
+  - {fileID: 383887939}
+  - {fileID: 1324603629}
+  - {fileID: 846369591}
+  - {fileID: 1143950873}
+  - {fileID: 2080676295}
   take: {fileID: 497605671}
   TotalText: {fileID: 530392779}
   CurrentText: {fileID: 473766754}
