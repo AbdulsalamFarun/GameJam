@@ -259,7 +259,7 @@ public class InventorySystem : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, 2f)) 
+        if (Physics.Raycast(ray, out hit, 4f)) 
         {
             if (hit.collider.CompareTag("Item"))
             {
