@@ -3,7 +3,22 @@ guid: 6bdcb86fb2ce28b4cbe88f8daac5d94f
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blackrat_body
+    second: {fileID: 2100000, guid: 515e7b2c678b7e54ca8934bfbeb2b64b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blackrat_eyes
+    second: {fileID: 2100000, guid: b9c6690f251c7d049bb3be3f31926ae4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blackrat_fur
+    second: {fileID: 2100000, guid: 5f2f3d57d95523b48b3f135ed691aaa1, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
