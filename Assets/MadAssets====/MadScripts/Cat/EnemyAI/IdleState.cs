@@ -22,6 +22,8 @@ public class IdleState : IEnemyState
         enemy.agent.isStopped = true;
 
         enemy.animator.SetBool("isIdle", true);
+        enemy.animator.SetBool("isWalking", false);
+        enemy.animator.SetBool("isChasing", false);
     }
 
     public void UpdateState()

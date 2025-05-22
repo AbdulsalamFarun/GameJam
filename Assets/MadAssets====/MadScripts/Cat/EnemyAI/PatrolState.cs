@@ -15,7 +15,10 @@ public class PatrolState : IEnemyState
         enemy.agent.SetDestination(targetPoint);
         Debug.Log("Patrol State Entered");
 
-        enemy.animator.SetBool("isPatroling", true);
+        enemy.animator.SetBool("isWalking", true);
+        enemy.animator.SetBool("isIdle", false);
+        enemy.animator.SetBool("isChasing", false);
+        enemy.animator.SetBool("isAttacking", false);
     }
 
     public void UpdateState()

@@ -17,9 +17,12 @@ public class ChaseState : IEnemyState
         player = enemy.playerTransform;
         giveUpTimer = 0f;
 
-        giveUpDelay = UnityEngine.Random.Range(3f, 10f);
+        giveUpDelay = UnityEngine.Random.Range(2f, 5f);
 
         enemy.animator.SetBool("isChasing", true);
+        enemy.animator.SetBool("isIdle", false);
+        enemy.animator.SetBool("isWalking", false);
+        enemy.animator.SetBool("isAttacking", false);
     }
 
     public void UpdateState()

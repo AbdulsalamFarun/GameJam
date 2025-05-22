@@ -16,7 +16,10 @@ public class AttackState : IEnemyState
         player = GameObject.FindWithTag("Player").transform;
         timer = attackCooldown;
         enemy.agent.isStopped = true;
-        enemy.animator.SetTrigger("isAttacking");
+        enemy.animator.SetBool("isAttacking", true);
+        enemy.animator.SetBool("isIdle", false);
+        enemy.animator.SetBool("isWalking", false);
+        enemy.animator.SetBool("isChasing", false);
     }
 
     public void UpdateState()
@@ -34,7 +37,7 @@ public class AttackState : IEnemyState
         }
 
         float distance = Vector3.Distance(enemy.transform.position, player.position);
-        if (distance > 2f)
+        if (distance > 1f)
         {
             enemy.SwitchState(enemy.chaseState);
         }
