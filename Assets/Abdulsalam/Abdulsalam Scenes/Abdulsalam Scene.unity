@@ -389,7 +389,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.24983281, y: 0.0429222, z: -0.019362256, w: -0.9671434}
+  m_LocalRotation: {x: 0.25021842, y: -0.04063405, z: 0.010511327, w: 0.96727926}
   m_LocalPosition: {x: 5.729911, y: 0.86200404, z: -0.018033147}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3414,13 +3414,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7774813033482756517}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.24983281, y: 0.0429222, z: -0.019362256, w: -0.9671434}
+  m_LocalRotation: {x: 0.25021842, y: -0.04063405, z: 0.010511327, w: 0.96727926}
   m_LocalPosition: {x: -6.9365215, y: 3.689617, z: 0.49038994}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1755605673}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 29.007, y: -4.811, z: 0}
 --- !u!114 &1769053135658267712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3581,17 +3581,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: blackrat1
       objectReference: {fileID: 0}
+    - target: {fileID: 6852244808400213681, guid: 6a60fc2b48d45c44a848ebb3c81ec9ac, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f41696262f953d149af887f0fbe0bf6f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5082586759243001367, guid: 6a60fc2b48d45c44a848ebb3c81ec9ac, type: 3}
-      insertIndex: 3
+      insertIndex: 2
+      addedObject: {fileID: 8951267400825337685}
+    - targetCorrespondingSourceObject: {fileID: 5082586759243001367, guid: 6a60fc2b48d45c44a848ebb3c81ec9ac, type: 3}
+      insertIndex: 4
       addedObject: {fileID: 8951267400825337684}
     - targetCorrespondingSourceObject: {fileID: 5082586759243001367, guid: 6a60fc2b48d45c44a848ebb3c81ec9ac, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8951267400825337683}
   m_SourcePrefab: {fileID: 100100000, guid: 6a60fc2b48d45c44a848ebb3c81ec9ac, type: 3}
+--- !u!137 &8864676041573995352 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6852244808400213681, guid: 6a60fc2b48d45c44a848ebb3c81ec9ac, type: 3}
+  m_PrefabInstance: {fileID: 8864676041573995351}
+  m_PrefabAsset: {fileID: 0}
 --- !u!136 &8951267400825337683
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3643,6 +3655,23 @@ MonoBehaviour:
   Totalpoints: 0
   startTime: 180
   timerText: {fileID: 2002931695}
+--- !u!114 &8951267400825337685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2419196329075406738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56de931e8fd1bfc459e575c1be80c253, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stunDuration: 2
+  ratRenderer: {fileID: 8864676041573995352}
+  transparentColor: {r: 1, g: 1, b: 1, a: 0.4}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  ratMaterial: {fileID: 2100000, guid: f41696262f953d149af887f0fbe0bf6f, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
