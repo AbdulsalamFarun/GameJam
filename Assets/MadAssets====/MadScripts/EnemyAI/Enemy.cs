@@ -1,8 +1,11 @@
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections.Generic;
 
 public class Enemy : MonoBehaviour
 {
+    [HideInInspector] public MonoBehaviour chefMono;
+
     [Header("Detection Settings")]
     public float viewRadius = 10f;
     public float viewAngle = 90f;
@@ -14,17 +17,25 @@ public class Enemy : MonoBehaviour
     public float patrolSpeed = 2f;
     public float chaseSpeed = 5f;
 
-    
-
     [Header("Chase Behavior")]
     public bool canGiveUp = true;
     public bool startChasing = false;
 
+    [Header("Give Up Time")]
+    public float minGiveUpTime = 2f;
+    public float maxGiveUpTime = 5f;
+
+    [Header("Attack Settings")]
+    public float attackTriggerDistance = 1.5f;
+
+    [Header("Patrol Mode")]
+    [HideInInspector] public int currentWaypointIndex = 0;
+    public bool useWaypointPatrol = false;
+    public List<Transform> patrolWaypoints;
+
     [HideInInspector] public Transform playerTransform;
     [HideInInspector] public NavMeshAgent agent;
     [HideInInspector] public Animator animator;
-
-    
 
     public float patrolRange = 10f;
     public float minIdleTime = 2f;
@@ -40,15 +51,16 @@ public class Enemy : MonoBehaviour
 
     void Awake()
     {
+        chefMono = this;
         animator = GetComponent<Animator>();
         playerTransform = GameObject.FindWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
         patrolCenter = transform.position;
 
         if (startChasing)
-        SwitchState(chaseState);
+            SwitchState(chaseState);
         else
-        SwitchState(patrolState);
+            SwitchState(patrolState);
     }
 
     void Update()
@@ -65,19 +77,27 @@ public class Enemy : MonoBehaviour
 
     public Vector3 GetRandomPatrolPoint()
     {
-        Vector3 randomPoint = patrolCenter + new Vector3(
-            Random.Range(-patrolRange, patrolRange),
-            0,
-            Random.Range(-patrolRange, patrolRange)
-        );
-
-        NavMeshHit hit;
-        if (NavMesh.SamplePosition(randomPoint, out hit, 2f, NavMesh.AllAreas))
+        if (useWaypointPatrol && patrolWaypoints.Count > 0)
         {
-            return hit.position;
+            Transform point = patrolWaypoints[Random.Range(0, patrolWaypoints.Count)];
+            return point.position;
         }
+        else
+        {
+            Vector3 randomPoint = patrolCenter + new Vector3(
+                Random.Range(-patrolRange, patrolRange),
+                0,
+                Random.Range(-patrolRange, patrolRange)
+            );
 
-        return transform.position;
+            NavMeshHit hit;
+            if (NavMesh.SamplePosition(randomPoint, out hit, 2f, NavMesh.AllAreas))
+            {
+                return hit.position;
+            }
+
+            return transform.position;
+        }
     }
 
     public bool PlayerInRange()
@@ -87,8 +107,7 @@ public class Enemy : MonoBehaviour
         Vector3 dirToPlayer = (playerTransform.position - eyePosition.position).normalized;
         float distanceToPlayer = Vector3.Distance(eyePosition.position, playerTransform.position);
 
-        // 1. Check close detection sphere
-        if (distanceToPlayer < 2f) // small radius auto-detect
+        if (distanceToPlayer < 2f)
         {
             if (!Physics.Raycast(eyePosition.position, dirToPlayer, distanceToPlayer, obstacleMask))
             {
@@ -96,7 +115,6 @@ public class Enemy : MonoBehaviour
             }
         }
 
-        // 2. Check field of view cone
         if (distanceToPlayer < viewRadius)
         {
             float angleToPlayer = Vector3.Angle(eyePosition.forward, dirToPlayer);
@@ -112,30 +130,24 @@ public class Enemy : MonoBehaviour
         return false;
     }
 
-
-    void OnDrawGizmosSelected() //Sphere Gizmo
+    void OnDrawGizmosSelected()
     {
         if (eyePosition == null) return;
-
-        // Draw sphere to represent detection range (the small detection sphere)
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(eyePosition.position, 2f); // Adjust 3f for your sphere radius
+        Gizmos.DrawWireSphere(eyePosition.position, 2f);
     }
 
-    void OnDrawGizmos() //RayCast Gizmo
+    void OnDrawGizmos()
     {
         if (eyePosition == null) return;
 
-        // Draw a cone to represent the field of view
         Gizmos.color = Color.yellow;
-
         Vector3 leftBoundary = Quaternion.Euler(0, -viewAngle / 2, 0) * eyePosition.forward;
         Vector3 rightBoundary = Quaternion.Euler(0, viewAngle / 2, 0) * eyePosition.forward;
 
         Gizmos.DrawRay(eyePosition.position, leftBoundary * viewRadius);
         Gizmos.DrawRay(eyePosition.position, rightBoundary * viewRadius);
 
-        // Optionally draw a center ray for visual feedback
         Gizmos.color = Color.red;
         Gizmos.DrawRay(eyePosition.position, eyePosition.forward * viewRadius);
     }
