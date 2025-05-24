@@ -48,10 +48,10 @@ public class AttackState : IEnemyState
             }*/
         }
 
-        Vector3 chefPos = new Vector3(enemy.transform.position.x, 0, enemy.transform.position.z);
+        Vector3 enemyPos = new Vector3(enemy.transform.position.x, 0, enemy.transform.position.z);
         Vector3 playerPos = new Vector3(player.position.x, 0, player.position.z);
-        float distance = Vector3.Distance(chefPos, playerPos);
-        if (distance > 1f)
+        float distance = Vector3.Distance(enemyPos, playerPos);
+        if (distance > 2f)
         {
             enemy.SwitchState(enemy.chaseState);
         }

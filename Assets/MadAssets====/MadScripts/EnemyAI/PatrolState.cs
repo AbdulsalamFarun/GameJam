@@ -39,7 +39,7 @@ public class PatrolState : IEnemyState
             if (enemy.useWaypointPatrol && enemy.patrolWaypoints.Count > 0)
             {
                 enemy.agent.isStopped = true;
-                enemy.chefMono.StartCoroutine(RotateThenIdle(enemy));
+                enemy.enemyMono.StartCoroutine(RotateThenIdle(enemy));
             }
             else
             {

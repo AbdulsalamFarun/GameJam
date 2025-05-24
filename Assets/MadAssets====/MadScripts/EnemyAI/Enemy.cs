@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Enemy : MonoBehaviour
 {
-    [HideInInspector] public MonoBehaviour chefMono;
+    [HideInInspector] public MonoBehaviour enemyMono;
 
     [Header("Detection Settings")]
     public float viewRadius = 10f;
@@ -51,7 +51,7 @@ public class Enemy : MonoBehaviour
 
     void Awake()
     {
-        chefMono = this;
+        enemyMono = this;
         animator = GetComponent<Animator>();
         playerTransform = GameObject.FindWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
