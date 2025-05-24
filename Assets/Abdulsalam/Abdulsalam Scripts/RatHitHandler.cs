@@ -3,7 +3,7 @@
 public class RatHitHandler : MonoBehaviour
 {
     public float stunDuration = 2f;
-    public SkinnedMeshRenderer ratRenderer; // Assign in inspector
+    
                 // Assign in inspector or via tag
 
     private bool isStunned = false;

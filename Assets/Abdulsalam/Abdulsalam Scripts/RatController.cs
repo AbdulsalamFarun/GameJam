@@ -8,6 +8,12 @@ public class RatController : MonoBehaviour
     public Animator animator;
     public float rotationSpeed = 10f;
     public float raycastDistance = 1.5f;
+    public float jumpForce = 5f;
+
+    public LayerMask groundLayer;
+    public Transform groundCheck;
+    public float groundCheckRadius = 0.3f;
+    private bool isGrounded;
 
     private Rigidbody rb;
     private Vector3 moveInput;
@@ -21,6 +27,8 @@ public class RatController : MonoBehaviour
 
     void Update()
     {
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundCheckRadius, groundLayer);
+
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
 
@@ -36,10 +44,36 @@ public class RatController : MonoBehaviour
         isRunning = Input.GetKey(KeyCode.LeftShift);
         currentSpeed = isRunning ? runSpeed : walkSpeed;
 
-        // Animator
+        // Animator basic movement
         animator.SetFloat("Speed", moveInput.magnitude);
         animator.SetBool("IsRunning", isRunning);
+
+        // Jump logic
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        {
+            
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            animator.SetBool("IsJumping", true);
+
+        }
+
+        // Set Falling animation
+        if (!isGrounded && rb.linearVelocity.y < -0.1f)
+        {
+            animator.SetBool("IsFalling", true);
+        }
+        else
+        {
+            animator.SetBool("IsFalling", false);
+        }
+
+        // Reset jump when grounded
+        if (isGrounded)
+        {
+            animator.SetBool("IsJumping", false);
+        }
     }
+
 
     void FixedUpdate()
     {
@@ -63,6 +97,14 @@ public class RatController : MonoBehaviour
                 Quaternion targetRotation = Quaternion.LookRotation(moveDirection, slopeNormal);
                 rb.rotation = Quaternion.Slerp(rb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
             }
+        }
+    }
+    void OnDrawGizmosSelected()
+    {
+        if (groundCheck != null)
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
         }
     }
 }
