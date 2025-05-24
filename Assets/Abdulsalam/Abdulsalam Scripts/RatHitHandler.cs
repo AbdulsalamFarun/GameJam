@@ -1,22 +1,20 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class RatHitHandler : MonoBehaviour
 {
     public float stunDuration = 2f;
     public SkinnedMeshRenderer ratRenderer; // Assign in inspector
-   
+                // Assign in inspector or via tag
+
     private bool isStunned = false;
     private float stunTimer = 0f;
-    private RatController ratController; // Reference to movement script
-
+    private RatController ratController;
     private Animator animator;
-
 
     void Start()
     {
         ratController = GetComponent<RatController>();
         animator = GetComponent<Animator>();
-        
 
     }
 
@@ -37,6 +35,8 @@ public class RatHitHandler : MonoBehaviour
         if (!isStunned)
         {
             StartStun();
+
+            
         }
     }
 
@@ -45,31 +45,24 @@ public class RatHitHandler : MonoBehaviour
         isStunned = true;
         stunTimer = stunDuration;
 
-        // Disable movement
         if (ratController != null)
         {
             ratController.enabled = false;
             animator.SetTrigger("StunStart");
         }
-
-        
     }
 
     private void EndStun()
     {
         isStunned = false;
 
-        // Enable movement again
         if (ratController != null)
         {
             ratController.enabled = true;
             animator.SetTrigger("StunEnd");
         }
-
-       
     }
 
-    // Optional: detect hit using trigger
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy"))
