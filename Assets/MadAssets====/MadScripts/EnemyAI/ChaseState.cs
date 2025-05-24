@@ -23,7 +23,6 @@ public class ChaseState : IEnemyState
         chef.animator.SetBool("isChasing", true);
         chef.animator.SetBool("isIdle", false);
         chef.animator.SetBool("isWalking", false);
-        chef.animator.SetBool("isAttacking", false);
     }
 
     public void UpdateState()

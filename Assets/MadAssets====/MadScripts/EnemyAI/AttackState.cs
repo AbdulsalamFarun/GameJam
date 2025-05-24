@@ -4,8 +4,7 @@ public class AttackState : IEnemyState
 {
     private Enemy enemy;
     private Transform player;
-    public int damage = 10;
-    private float attackCooldown = 1f;
+    private float attackCooldown = 3f;
     private float timer;
 
     public EnemyStateType GetStateType() => EnemyStateType.Attack;
@@ -15,12 +14,8 @@ public class AttackState : IEnemyState
         this.enemy = enemy;
         player = GameObject.FindWithTag("Player").transform;
         timer = attackCooldown;
+        timer = 0f;
         enemy.agent.isStopped = true;
-        enemy.animator.SetBool("isAttacking", true);
-        enemy.animator.SetBool("isIdle", false);
-        enemy.animator.SetBool("isWalking", false);
-        enemy.animator.SetBool("isChasing", false);
-        Debug.Log("Switching to Attack State");
     }
 
     public void UpdateState()
@@ -39,19 +34,17 @@ public class AttackState : IEnemyState
         timer -= Time.deltaTime;
         if (timer <= 0f)
         {
-            /*PlayerStats playerStats = player.GetComponent<PlayerStats>();
-            if (playerStats != null)
-            {
-                playerStats.TakeDamage(damage);
-                Debug.Log("Enemy attacks player!");
-                timer = attackCooldown;
-            }*/
+            enemy.animator.SetTrigger("isAttacking");
+            Debug.Log("Switching to Attack State");
+
+            timer = attackCooldown;
+            enemy.animator.SetBool("isWaiting", true);
         }
 
         Vector3 enemyPos = new Vector3(enemy.transform.position.x, 0, enemy.transform.position.z);
         Vector3 playerPos = new Vector3(player.position.x, 0, player.position.z);
         float distance = Vector3.Distance(enemyPos, playerPos);
-        if (distance > 2f)
+        if (distance > 2.3f)
         {
             enemy.SwitchState(enemy.chaseState);
         }
