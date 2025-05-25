@@ -53,6 +53,7 @@ public class RatController : MonoBehaviour
         {
             
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            Debug.Log("huub");
             animator.SetBool("IsJumping", true);
 
         }
