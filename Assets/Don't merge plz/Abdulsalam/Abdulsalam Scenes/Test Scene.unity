@@ -13397,68 +13397,8 @@ MonoBehaviour:
       m_Data: []
   m_Splines:
   - m_EditModeType: 1
-    m_Knots:
-    - Position:
-        x: 0
-        y: 0
-        z: 0
-      TangentIn:
-        x: 0
-        y: 0
-        z: -4.476422
-      TangentOut:
-        x: 0
-        y: 0
-        z: 4.476422
-      Rotation:
-        value:
-          x: 0.7417433
-          y: -0.072990954
-          z: 0.5871743
-          w: 0.3157778
-    - Position:
-        x: 1.4707031
-        y: -10.342125
-        z: -4.598633
-      TangentIn:
-        x: 0
-        y: 0
-        z: -13.561185
-      TangentOut:
-        x: 0
-        y: 0
-        z: 13.561185
-      Rotation:
-        value:
-          x: 0.1770631
-          y: 0.75160205
-          z: -0.16511866
-          w: -0.61357874
-    - Position:
-        x: -79.80542
-        y: -2.5160904
-        z: -15.664307
-      TangentIn:
-        x: 0
-        y: 0
-        z: -0
-      TangentOut:
-        x: 0
-        y: 0
-        z: 0
-      Rotation:
-        value:
-          x: 0.6947428
-          y: 0.0000000052749414
-          z: 0.13630927
-          w: 0.70622396
-    m_MetaData:
-    - Mode: 2
-      Tension: 0.5
-    - Mode: 2
-      Tension: 0.5
-    - Mode: 2
-      Tension: 0.5
+    m_Knots: []
+    m_MetaData: []
     m_Closed: 0
     m_IntData:
       m_Data: []
@@ -15891,6 +15831,11 @@ MeshCollider:
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: bdd8b59fd28ade14d951aeeb4c9644d0, type: 3}
   m_PrefabInstance: {fileID: 1664641186}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &716193840 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3147805269515289021, guid: 6a60fc2b48d45c44a848ebb3c81ec9ac, type: 3}
+  m_PrefabInstance: {fileID: 1593098408}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &718289819 stripped
 GameObject:
@@ -24688,7 +24633,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 975630202}
-  - component: {fileID: 975630201}
   - component: {fileID: 975630200}
   m_Layer: 0
   m_Name: PlayerCamera
@@ -24709,7 +24653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0927c973a3f522409a03e546728cbb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1940478622}
+  target: {fileID: 716193840}
   distance: 3
   minDistance: 1
   maxDistance: 2
@@ -24717,49 +24661,6 @@ MonoBehaviour:
   mouseSensitivity: 1
   minY: 5
   maxY: 80
---- !u!114 &975630201
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 975630199}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Priority:
-    Enabled: 0
-    m_Value: 0
-  OutputChannel: 1
-  StandbyUpdate: 2
-  m_StreamingVersion: 20241001
-  m_LegacyPriority: 0
-  Target:
-    TrackingTarget: {fileID: 0}
-    LookAtTarget: {fileID: 0}
-    CustomLookAtTarget: 0
-  Lens:
-    FieldOfView: 60.000004
-    OrthographicSize: 5
-    NearClipPlane: 0.3
-    FarClipPlane: 1000
-    Dutch: 0
-    ModeOverride: 0
-    PhysicalProperties:
-      GateFit: 2
-      SensorSize: {x: 21.946, y: 16.002}
-      LensShift: {x: 0, y: 0}
-      FocusDistance: 10
-      Iso: 200
-      ShutterSpeed: 0.005
-      Aperture: 16
-      BladeCount: 5
-      Curvature: {x: 2, y: 11}
-      BarrelClipping: 0.25
-      Anamorphism: 0
-  BlendHint: 0
 --- !u!4 &975630202
 Transform:
   m_ObjectHideFlags: 0
@@ -24769,7 +24670,7 @@ Transform:
   m_GameObject: {fileID: 975630199}
   serializedVersion: 2
   m_LocalRotation: {x: 0.25021842, y: -0.04063405, z: 0.010511327, w: 0.96727926}
-  m_LocalPosition: {x: 5.729911, y: 0.86200404, z: -0.018033147}
+  m_LocalPosition: {x: 5.42, y: -1.19, z: 3.67}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -31093,11 +30994,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0b564eb820a66f4e88e9615bcff3903, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pausePanel: {fileID: 1802439982}
-  settingsPanel: {fileID: 468499212}
-  playerController: {fileID: 0}
-  cameraController: {fileID: 0}
-  gameOverPanel: {fileID: 0}
 --- !u!114 &1264407418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33785,7 +33681,7 @@ MonoBehaviour:
       Offset: {x: 0, y: 0}
   CenterOnActivate: 1
   TargetOffset: {x: 0, y: 0, z: 0}
-  Damping: {x: 0.5, y: 0.5}
+  Damping: {x: 0, y: 0}
   Lookahead:
     Enabled: 0
     Time: 0
@@ -33804,7 +33700,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SplineSettings:
-    Spline: {fileID: 609414285}
+    Spline: {fileID: 0}
     Position: 0
     Units: 1
   SplineOffset: {x: 0, y: 0, z: 0}
@@ -33849,10 +33745,10 @@ MonoBehaviour:
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
-    FieldOfView: 60.000004
-    OrthographicSize: 5
-    NearClipPlane: 0.3
-    FarClipPlane: 17154
+    FieldOfView: 40
+    OrthographicSize: 10
+    NearClipPlane: 0.1
+    FarClipPlane: 5000
     Dutch: 0
     ModeOverride: 0
     PhysicalProperties:
@@ -35101,11 +34997,11 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60.000004
+  near clip plane: 0.1
+  far clip plane: 5000
+  field of view: 40
   orthographic: 0
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -35129,8 +35025,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1469140826}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.25021842, y: -0.04063405, z: 0.010511327, w: 0.96727926}
-  m_LocalPosition: {x: 5.729911, y: 0.86200404, z: -0.018033147}
+  m_LocalRotation: {x: 0.31225434, y: 0.67625666, z: -0.54127365, w: 0.3901245}
+  m_LocalPosition: {x: 2103.87, y: 815.87, z: 482.43}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -35192,6 +35088,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d34760894cd9eb4787f7ff2e9e72b2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 5
 --- !u!114 &1469140832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36417,6 +36314,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24e12822eb2192844a9f363616972111, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pausePanel: {fileID: 0}
+  settingsPanel: {fileID: 0}
+  playerController: {fileID: 0}
+  cameraController: {fileID: 0}
 --- !u!1 &1507255774 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8671116810592412039, guid: 188f2d3b02468654ea72a458737145da, type: 3}
@@ -48619,11 +48520,6 @@ CanvasRenderer:
 --- !u!1 &1940478621 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5082586759243001367, guid: 6a60fc2b48d45c44a848ebb3c81ec9ac, type: 3}
-  m_PrefabInstance: {fileID: 1593098408}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1940478622 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4802176327142803269, guid: 6a60fc2b48d45c44a848ebb3c81ec9ac, type: 3}
   m_PrefabInstance: {fileID: 1593098408}
   m_PrefabAsset: {fileID: 0}
 --- !u!136 &1940478623
