@@ -107,7 +107,7 @@ public class Enemy : MonoBehaviour
         Vector3 dirToPlayer = (playerTransform.position - eyePosition.position).normalized;
         float distanceToPlayer = Vector3.Distance(eyePosition.position, playerTransform.position);
 
-        if (distanceToPlayer < 2f)
+        if (distanceToPlayer < 7f)
         {
             if (!Physics.Raycast(eyePosition.position, dirToPlayer, distanceToPlayer, obstacleMask))
             {
@@ -134,7 +134,7 @@ public class Enemy : MonoBehaviour
     {
         if (eyePosition == null) return;
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(eyePosition.position, 2f);
+        Gizmos.DrawWireSphere(eyePosition.position, 7f);
     }
 
     void OnDrawGizmos()

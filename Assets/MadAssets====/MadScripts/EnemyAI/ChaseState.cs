@@ -20,20 +20,22 @@ public class ChaseState : IEnemyState
 
         giveUpDelay = Random.Range(chef.minGiveUpTime, chef.maxGiveUpTime);
 
-        if (player.position.y >= -5f)
-        {
-            chef.animator.SetBool("isCrouchChasing", true);
-            chef.animator.SetBool("isChasing", false);
-            chef.animator.SetBool("isWalking", false);
-        }
-        else
-        {
-            chef.animator.SetBool("isChasing", true);
-            chef.animator.SetBool("isCrouchChasing", false);
-            chef.animator.SetBool("isIdle", false);
-            chef.animator.SetBool("isWalking", false);
-        }
-        }
+        // if (player.localPosition.y <= -5f)
+        // {
+        //     chef.animator.SetBool("isCrouchChasing", true);
+        //     chef.animator.SetBool("isChasing", false);
+        //     chef.animator.SetBool("isWalking", false);
+        // }
+        // else if (player.localPosition.y > -5f)
+        // {
+        //     chef.animator.SetBool("isChasing", true);
+        //     chef.animator.SetBool("isCrouchChasing", false);
+        //     chef.animator.SetBool("isIdle", false);
+        //     chef.animator.SetBool("isWalking", false);
+        // }
+
+        // Debug.Log(player.localPosition.y + " is the player position Y");
+    }
 
     public void UpdateState()
     {
@@ -74,6 +76,23 @@ public class ChaseState : IEnemyState
         {
             chef.SwitchState(chef.attackState);
         }
+
+        
+        if (player.localPosition.y <= -5f)
+        {
+            chef.animator.SetBool("isCrouchChasing", true);
+            chef.animator.SetBool("isChasing", false);
+            chef.animator.SetBool("isWalking", false);
+        }
+        else if (player.localPosition.y > -5f)
+        {
+            chef.animator.SetBool("isChasing", true);
+            chef.animator.SetBool("isCrouchChasing", false);
+            chef.animator.SetBool("isIdle", false);
+            chef.animator.SetBool("isWalking", false);
+        }
+
+        Debug.Log(player.localPosition.y + " is the player position Y");
     }
 
     public void ExitState()

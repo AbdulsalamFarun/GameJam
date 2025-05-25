@@ -34,12 +34,13 @@ public class AttackState : IEnemyState
         timer -= Time.deltaTime;
         if (timer <= 0f)
         {
-            if (player.position.y >= -5f)
+            if (player.localPosition.y <= -5f)
             {
                 enemy.animator.SetTrigger("isCrouchAttacking");
-                enemy.animator.SetBool("isCrouchWalking", false);
+                enemy.animator.SetBool("isCrouchChasing", false);
+                Debug.Log("Switching to Crouch Attack State");
             }
-            else
+            else if (player.localPosition.y > -5f)
             {
                 enemy.animator.SetTrigger("isAttacking");
                 Debug.Log("Switching to Attack State");
