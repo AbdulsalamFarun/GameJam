@@ -36,7 +36,8 @@ public class AttackState : IEnemyState
         {
             if (player.position.y <= 1f)
             {
-                enemy.animator.SetBool("isCrouchAttacking", true);
+                enemy.animator.SetTrigger("isCrouchAttacking");
+                enemy.animator.SetBool("isCrouchWalking", false);
             }
             else
             {

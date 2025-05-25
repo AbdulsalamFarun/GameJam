@@ -24,6 +24,7 @@ public class ChaseState : IEnemyState
         {
             chef.animator.SetBool("isCrouchChasing", true);
             chef.animator.SetBool("isChasing", false);
+            chef.animator.SetTrigger("isCrouchAttacking");
         }
         else
         {
