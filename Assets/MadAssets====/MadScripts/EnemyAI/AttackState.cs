@@ -34,11 +34,18 @@ public class AttackState : IEnemyState
         timer -= Time.deltaTime;
         if (timer <= 0f)
         {
-            enemy.animator.SetTrigger("isAttacking");
-            Debug.Log("Switching to Attack State");
+            if (player.position.y <= 1f)
+            {
+                enemy.animator.SetBool("isCrouchAttacking", true);
+            }
+            else
+            {
+                enemy.animator.SetTrigger("isAttacking");
+                Debug.Log("Switching to Attack State");
 
-            timer = attackCooldown;
-            enemy.animator.SetBool("isWaiting", true);
+                timer = attackCooldown;
+                enemy.animator.SetBool("isWaiting", true);
+            }
         }
 
         Vector3 enemyPos = new Vector3(enemy.transform.position.x, 0, enemy.transform.position.z);
