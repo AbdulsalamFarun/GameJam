@@ -34,6 +34,7 @@ public class PatrolState : IEnemyState
         enemy.animator.SetBool("isWalking", true);
         enemy.animator.SetBool("isIdle", false);
         enemy.animator.SetBool("isChasing", false);
+        enemy.animator.SetBool("isCrouchChasing", false);
         
     }
 
