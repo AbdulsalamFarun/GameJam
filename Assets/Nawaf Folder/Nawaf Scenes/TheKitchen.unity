@@ -40456,15 +40456,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4802176327142803269, guid: 6a60fc2b48d45c44a848ebb3c81ec9ac, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.776
+      value: -11.772
       objectReference: {fileID: 0}
     - target: {fileID: 4802176327142803269, guid: 6a60fc2b48d45c44a848ebb3c81ec9ac, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.976
+      value: -4.705
       objectReference: {fileID: 0}
     - target: {fileID: 4802176327142803269, guid: 6a60fc2b48d45c44a848ebb3c81ec9ac, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 23.05
+      value: 23.049
       objectReference: {fileID: 0}
     - target: {fileID: 4802176327142803269, guid: 6a60fc2b48d45c44a848ebb3c81ec9ac, type: 3}
       propertyPath: m_LocalRotation.w
@@ -52961,7 +52961,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4871556165750621601, guid: 64ff7ad6a78537d439b4ccefe4426f60, type: 3}
       propertyPath: viewRadius
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4871556165750621601, guid: 64ff7ad6a78537d439b4ccefe4426f60, type: 3}
       propertyPath: patrolSpeed
@@ -52973,7 +52973,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4871556165750621601, guid: 64ff7ad6a78537d439b4ccefe4426f60, type: 3}
       propertyPath: attackTriggerDistance
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4871556165750621601, guid: 64ff7ad6a78537d439b4ccefe4426f60, type: 3}
       propertyPath: patrolWaypoints.Array.size
