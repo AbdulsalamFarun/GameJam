@@ -8,6 +8,10 @@ public class SorceMangeScript : MonoBehaviour
 
 
     public UnityEvent<string, int> SubmitScoreEvent;
+    void Start()
+    {
+        inputName.text = ""; 
+    }
 
 
     public void SubmitScore()
