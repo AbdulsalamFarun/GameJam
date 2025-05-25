@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene("Nawaf");
+        SceneManager.LoadScene("Test Scene");
     }
 
     public void OpenSettings()
