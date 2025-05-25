@@ -5,7 +5,6 @@ public class PatrolState : IEnemyState
 {
     private Enemy enemy;
     private Vector3 targetPoint;
-    private int currentWaypointIndex = -1;
 
     public EnemyStateType GetStateType() => EnemyStateType.Patrol;
 
@@ -16,7 +15,13 @@ public class PatrolState : IEnemyState
 
         if (enemy.useWaypointPatrol && enemy.patrolWaypoints.Count > 0)
         {
-            enemy.currentWaypointIndex = (enemy.currentWaypointIndex + 1) % enemy.patrolWaypoints.Count;
+            int nextIndex;
+            do
+            {
+                nextIndex = Random.Range(0, enemy.patrolWaypoints.Count);
+            } while (nextIndex == enemy.currentWaypointIndex);
+
+            enemy.currentWaypointIndex = nextIndex;
             targetPoint = enemy.patrolWaypoints[enemy.currentWaypointIndex].position;
         }
         else
@@ -55,21 +60,6 @@ public class PatrolState : IEnemyState
     }
 
     public void ExitState() { }
-
-    private void SetNextPatrolPoint()
-    {
-        if (enemy.useWaypointPatrol && enemy.patrolWaypoints.Count > 0)
-        {
-            currentWaypointIndex = (currentWaypointIndex + 1) % enemy.patrolWaypoints.Count;
-            targetPoint = enemy.patrolWaypoints[currentWaypointIndex].position;
-        }
-        else
-        {
-            targetPoint = enemy.GetRandomPatrolPoint();
-        }
-
-        enemy.agent.SetDestination(targetPoint);
-    }
 
     private IEnumerator RotateThenIdle(Enemy enemy)
     {

@@ -20,10 +20,17 @@ public class ChaseState : IEnemyState
 
         giveUpDelay = Random.Range(chef.minGiveUpTime, chef.maxGiveUpTime);
 
-        chef.animator.SetBool("isChasing", true);
-        chef.animator.SetBool("isIdle", false);
-        chef.animator.SetBool("isWalking", false);
+        if (player.position.y <= 1f)
+        { 
+            chef.animator.SetBool("isCrouchChasing", true);
+        }
+        else
+        {
+            chef.animator.SetBool("isChasing", true);
+            chef.animator.SetBool("isIdle", false);
+            chef.animator.SetBool("isWalking", false);
     }
+        }
 
     public void UpdateState()
     {
