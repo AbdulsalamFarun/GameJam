@@ -23,6 +23,8 @@ public class RatController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        Debug.Log(!isGrounded);
+        isGrounded = true;
     }
 
     void Update()
@@ -53,7 +55,6 @@ public class RatController : MonoBehaviour
         {
             
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            Debug.Log("huub");
             animator.SetBool("IsJumping", true);
 
         }
@@ -66,18 +67,23 @@ public class RatController : MonoBehaviour
         else
         {
             animator.SetBool("IsFalling", false);
+
         }
 
-        // Reset jump when grounded
-        if (isGrounded)
-        {
-            animator.SetBool("IsJumping", false);
-        }
+        animator.SetBool("IsJumping", !isGrounded);
     }
 
 
     void FixedUpdate()
     {
+        if (!isGrounded)
+        {
+            // In air, skip slope adjustment
+            Vector3 moveVelocity = moveInput * currentSpeed;
+            rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
+            return;
+        }
+
         // Raycast to detect slope normal
         Ray ray = new Ray(transform.position + Vector3.up * 0.2f, Vector3.down);
         if (Physics.Raycast(ray, out RaycastHit hit, raycastDistance))
@@ -100,6 +106,7 @@ public class RatController : MonoBehaviour
             }
         }
     }
+
     void OnDrawGizmosSelected()
     {
         if (groundCheck != null)
