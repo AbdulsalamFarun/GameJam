@@ -76,34 +76,15 @@ public class RatController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!isGrounded)
+        // Movement
+        Vector3 moveVelocity = moveInput * currentSpeed;
+        rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
+
+        // Rotation
+        if (moveInput != Vector3.zero)
         {
-            // In air, skip slope adjustment
-            Vector3 moveVelocity = moveInput * currentSpeed;
-            rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
-            return;
-        }
-
-        // Raycast to detect slope normal
-        Ray ray = new Ray(transform.position + Vector3.up * 0.2f, Vector3.down);
-        if (Physics.Raycast(ray, out RaycastHit hit, raycastDistance))
-        {
-            // Get the slope normal
-            Vector3 slopeNormal = hit.normal;
-
-            // Project movement on the slope
-            Vector3 moveDirection = Vector3.ProjectOnPlane(moveInput, slopeNormal).normalized;
-
-            // Move the character
-            Vector3 moveVelocity = moveDirection * currentSpeed;
-            rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
-
-            // Rotate character to match movement direction
-            if (moveDirection != Vector3.zero)
-            {
-                Quaternion targetRotation = Quaternion.LookRotation(moveDirection, slopeNormal);
-                rb.rotation = Quaternion.Slerp(rb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
-            }
+            Quaternion targetRotation = Quaternion.LookRotation(moveInput, Vector3.up);
+            rb.rotation = Quaternion.Slerp(rb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
         }
     }
 
