@@ -51428,7 +51428,7 @@ MonoBehaviour:
   pickupPanel: {fileID: 1595706105}
   Currentpoints: 0
   Totalpoints: 0
-  startTime: 60
+  startTime: 180
   timerText: {fileID: 1356143740}
   interactableLayer:
     serializedVersion: 2
