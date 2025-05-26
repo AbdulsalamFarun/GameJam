@@ -123,10 +123,10 @@ public class InventorySystem : MonoBehaviour
         {
             Currentval--;
            Totalpoints++;
-            // if (Currentval % 5 == 0)
-            // {
-            //     SoundManager.PlaySFX(SoundManager.Point);
-            // }
+            if (Currentval % 5 == 0)
+            {
+                SoundManager.PlaySFX(SoundManager.Point);
+            }
             TotalText.text = "Total: " + Totalpoints;
             yield return new WaitForSeconds(0.01f);
             
@@ -288,7 +288,7 @@ public class InventorySystem : MonoBehaviour
                     {
                         take.color = new Color32(255, 0, 0, 255);
 
-                        take.text = "Retto is full";
+                        take.text = "Reeto is full";
                         pickupPanel.SetActive(true);
 
                     }
@@ -345,7 +345,7 @@ public class InventorySystem : MonoBehaviour
                     currentTime += countTime;
                     Debug.Log(InventoryItems.Count);
                     Debug.Log(InventoryItems.ToString());
-                    // SoundManager.Instance.SFXSource.pitch = 1;
+                    //SoundManager.Instance.SFXSource.pitch = 1;
                     StartCoroutine(ReducePointsOneByOne());
                     StartCoroutine(incrasePointsOneByOne());
 
