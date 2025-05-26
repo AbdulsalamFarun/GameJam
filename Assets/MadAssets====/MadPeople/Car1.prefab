@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7294076024777477231}
   m_Layer: 0
   m_Name: Car2_LR
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,7 +102,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 5733442054063947594}
   m_Layer: 0
   m_Name: Car2_RF
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -210,7 +210,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -228,9 +228,10 @@ GameObject:
   - component: {fileID: 8487501027587186917}
   - component: {fileID: 7405435165314498793}
   - component: {fileID: 3168655858953720293}
+  - component: {fileID: 4044113280444132944}
   m_Layer: 0
   m_Name: Car1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -311,6 +312,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a4bf6fffd986934aae7b7bb0021bd76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4044113280444132944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4901711641111615324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3f695e397755964aa0957ab232e569a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackCooldown: 2
+  ratHitHandler: {fileID: 0}
 --- !u!1 &6130608109410961203
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,7 +340,7 @@ GameObject:
   - component: {fileID: 5118111829215534762}
   m_Layer: 0
   m_Name: Car2_LF
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -413,7 +428,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -433,7 +448,7 @@ GameObject:
   - component: {fileID: 6828237741636584349}
   m_Layer: 0
   m_Name: Car2_RR
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -521,7 +536,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -541,7 +556,7 @@ GameObject:
   - component: {fileID: 3474529695266268681}
   m_Layer: 0
   m_Name: Car2_Body
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

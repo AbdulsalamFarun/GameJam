@@ -35,6 +35,7 @@ public class RatHitHandler : MonoBehaviour
         if (!isStunned)
         {
             StartStun();
+            Debug.Log("Rat hit and stunned!");
 
             
         }
@@ -68,6 +69,7 @@ public class RatHitHandler : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             TakeHit();
+            Debug.Log("Rat hit by enemy!");
         }
     }
 }

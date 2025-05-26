@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class AttackState : IEnemyState
@@ -5,7 +6,7 @@ public class AttackState : IEnemyState
     private Enemy enemy;
     private Transform player;
     private float attackCooldown = 3f;
-    private float timer;
+    private bool canAttack = true;
 
     public EnemyStateType GetStateType() => EnemyStateType.Attack;
 
@@ -13,17 +14,15 @@ public class AttackState : IEnemyState
     {
         this.enemy = enemy;
         player = GameObject.FindWithTag("Player").transform;
-        timer = attackCooldown;
-        timer = 0f;
         enemy.agent.isStopped = true;
+        canAttack = true;
     }
 
     public void UpdateState()
     {
-
         // Face the player smoothly
         Vector3 direction = (player.position - enemy.transform.position).normalized;
-        direction.y = 0f; // keep only horizontal rotation
+        direction.y = 0f;
 
         if (direction != Vector3.zero)
         {
@@ -31,25 +30,13 @@ public class AttackState : IEnemyState
             enemy.transform.rotation = Quaternion.Slerp(enemy.transform.rotation, lookRotation, Time.deltaTime * 5f);
         }
 
-        timer -= Time.deltaTime;
-        if (timer <= 0f)
+        // Start attack only if cooldown is over
+        if (canAttack)
         {
-            if (player.localPosition.y <= -5f)
-            {
-                enemy.animator.SetTrigger("isCrouchAttacking");
-                enemy.animator.SetBool("isCrouchChasing", false);
-                Debug.Log("Switching to Crouch Attack State");
-            }
-            else if (player.localPosition.y > -5f)
-            {
-                enemy.animator.SetTrigger("isAttacking");
-                Debug.Log("Switching to Attack State");
-
-                timer = attackCooldown;
-                enemy.animator.SetBool("isWaiting", true);
-            }
+            enemy.enemyMono.StartCoroutine(AttackCooldown());
         }
 
+        // Check if player is out of attack range
         Vector3 enemyPos = new Vector3(enemy.transform.position.x, 0, enemy.transform.position.z);
         Vector3 playerPos = new Vector3(player.position.x, 0, player.position.z);
         float distance = Vector3.Distance(enemyPos, playerPos);
@@ -62,5 +49,28 @@ public class AttackState : IEnemyState
     public void ExitState()
     {
         enemy.agent.isStopped = false;
+        enemy.animator.SetBool("isWaiting", false);
+    }
+
+    private IEnumerator AttackCooldown()
+    {
+        canAttack = false;
+
+        // Attack type depends on player's Y position
+        if (player.localPosition.y <= -5f)
+        {
+            enemy.animator.SetTrigger("isCrouchAttacking");
+            enemy.animator.SetBool("isCrouchChasing", false);
+            Debug.Log("Crouch Attack Triggered");
+        }
+        else
+        {
+            enemy.animator.SetTrigger("isAttacking");
+            enemy.animator.SetBool("isWaiting", true);
+            Debug.Log("Normal Attack Triggered");
+        }
+
+        yield return new WaitForSeconds(attackCooldown);
+        canAttack = true;
     }
 }

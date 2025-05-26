@@ -28381,6 +28381,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1188965958}
   m_CullTransparentMesh: 1
+--- !u!1 &1189867845 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4058456708214114566, guid: 64ff7ad6a78537d439b4ccefe4426f60, type: 3}
+  m_PrefabInstance: {fileID: 2048515471}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1189867847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189867845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3f695e397755964aa0957ab232e569a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackCooldown: 2
+  ratHitHandler: {fileID: 0}
 --- !u!1 &1190561635 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 46ccc72e39f4e9e49a08036472f3b053, type: 3}
@@ -55523,6 +55542,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4058456708214114566, guid: 64ff7ad6a78537d439b4ccefe4426f60, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 4871556165750621601, guid: 64ff7ad6a78537d439b4ccefe4426f60, type: 3}
       propertyPath: chaseSpeed
       value: 5
@@ -55541,7 +55564,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4871556165750621601, guid: 64ff7ad6a78537d439b4ccefe4426f60, type: 3}
       propertyPath: attackTriggerDistance
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4871556165750621601, guid: 64ff7ad6a78537d439b4ccefe4426f60, type: 3}
       propertyPath: patrolWaypoints.Array.size
@@ -55571,6 +55594,10 @@ PrefabInstance:
       propertyPath: 'patrolWaypoints.Array.data[5]'
       value: 
       objectReference: {fileID: 389414236}
+    - target: {fileID: 6394329515862643650, guid: 64ff7ad6a78537d439b4ccefe4426f60, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6602842079836175014, guid: 64ff7ad6a78537d439b4ccefe4426f60, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.35399336
@@ -55641,7 +55668,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4058456708214114566, guid: 64ff7ad6a78537d439b4ccefe4426f60, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1189867847}
   m_SourcePrefab: {fileID: 100100000, guid: 64ff7ad6a78537d439b4ccefe4426f60, type: 3}
 --- !u!1 &2049969975
 GameObject:
