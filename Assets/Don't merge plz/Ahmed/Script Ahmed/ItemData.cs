@@ -5,6 +5,8 @@ public enum ItemType
     meat,
     Cheese,
     carrot,
+    pizza,
+
  
 
 

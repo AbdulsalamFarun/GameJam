@@ -23,6 +23,7 @@ public class InventorySystem : MonoBehaviour
     private float currentTime;
     private float countTime;
     public TextMeshProUGUI timerText;
+    public LayerMask interactableLayer;
 
     private bool timerRunning = true;
     SoundManager SoundManager;
@@ -31,7 +32,12 @@ public class InventorySystem : MonoBehaviour
 
 
 
+    private void Awake()
+    {
+        transform.SetParent(null);
+        DontDestroyOnLoad(gameObject);
 
+    }
 
 
 
@@ -259,10 +265,13 @@ public class InventorySystem : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, 4f)) 
+        if (Physics.Raycast(ray, out hit, 10f, interactableLayer )) 
         {
+            
+
             if (hit.collider.CompareTag("Item"))
             {
+                Debug.Log("In");
                 ItemData data = hit.collider.GetComponent<ItemData>();
 
                 if (isNotCollected)
@@ -279,7 +288,7 @@ public class InventorySystem : MonoBehaviour
                     {
                         take.color = new Color32(255, 0, 0, 255);
 
-                        take.text = "Inventory is full";
+                        take.text = "Retto is full";
                         pickupPanel.SetActive(true);
 
                     }
@@ -324,6 +333,7 @@ public class InventorySystem : MonoBehaviour
             }
             else if (hit.collider.CompareTag("RatHome"))
             {
+                Debug.Log("store");
 
                 take.color = Color.white;
 
@@ -331,6 +341,7 @@ public class InventorySystem : MonoBehaviour
                 pickupPanel.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.E) && InventoryItems.Count != 0)
                 {
+                    FindObjectOfType<ItemManager>().RespawnItems();
                     currentTime += countTime;
                     Debug.Log(InventoryItems.Count);
                     Debug.Log(InventoryItems);
@@ -393,7 +404,8 @@ public class InventorySystem : MonoBehaviour
 
 
     }
-
+   
+    
 
 
 }

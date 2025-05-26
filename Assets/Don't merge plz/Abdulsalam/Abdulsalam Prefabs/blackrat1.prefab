@@ -6680,7 +6680,7 @@ Transform:
   m_GameObject: {fileID: 5082586759243001367}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.882, y: 2.831, z: 1.6}
+  m_LocalPosition: {x: -1202.7651, y: 938.87, z: -1986.46}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6752,14 +6752,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 3
   runSpeed: 6
+  cameraTransform: {fileID: 0}
+  animator: {fileID: 3595963577909384495}
+  rotationSpeed: 10
+  raycastDistance: 1.5
   jumpForce: 5
-  groundCheck: {fileID: 4802176327142803269}
-  groundCheckRadius: 0.3
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  cameraTransform: {fileID: 0}
-  animator: {fileID: 3595963577909384495}
+  groundCheck: {fileID: 4802176327142803269}
+  groundCheckRadius: 0.3
 --- !u!65 &4346753239913575797
 BoxCollider:
   m_ObjectHideFlags: 0
