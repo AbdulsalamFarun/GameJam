@@ -6,7 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Nawaf Folder/Nawaf Scenes/NawafMainMenu.unity
+    path: Assets/TextMesh Pro/Examples & Extras/Scenes/26 - Dropdown Placeholder
+      Example.unity
     guid: ad42ec23f61eac845a9210239faf3446
   - enabled: 1
     path: Assets/Don't merge plz/Abdulsalam/Abdulsalam Scenes/Test Scene.unity

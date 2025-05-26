@@ -67,6 +67,7 @@ public class InventorySystem : MonoBehaviour
             currentTime -= Time.deltaTime;
             if (currentTime <= 0)
             {
+                LeaderBoardSaver.Instance.SeetLeaderbordEntry(PlayerPrefs.GetString("Player"), Totalpoints);
                 currentTime = 0;
                 timerRunning = false;
                 TimerEnded();

@@ -19,3 +19,4 @@ public class LeaderBoardSaver : MonoBehaviour
         LeaderboardCreator.ResetPlayer();
     }
 }
+

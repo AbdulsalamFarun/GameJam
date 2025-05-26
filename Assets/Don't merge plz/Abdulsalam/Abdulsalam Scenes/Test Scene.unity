@@ -37024,7 +37024,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d34760894cd9eb4787f7ff2e9e72b2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
 --- !u!114 &1469140832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38322,10 +38321,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24e12822eb2192844a9f363616972111, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pausePanel: {fileID: 0}
-  settingsPanel: {fileID: 0}
-  playerController: {fileID: 0}
-  cameraController: {fileID: 0}
 --- !u!1 &1507255774 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8671116810592412039, guid: 188f2d3b02468654ea72a458737145da, type: 3}

@@ -1,6 +1,9 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.Events;
+using UnityEngine.UI;
+using UnityEditor.SearchService;
+using UnityEngine.SceneManagement;
 public class SorceMangeScript : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI inputScore;
@@ -10,13 +13,18 @@ public class SorceMangeScript : MonoBehaviour
     public UnityEvent<string, int> SubmitScoreEvent;
     void Start()
     {
-        inputName.text = ""; 
+        inputName.text = "";
     }
+    void EndGame()
+    {
 
+        PlayerPrefs.SetString("Player", inputName.text);
+    }
 
     public void SubmitScore()
     {
-        SubmitScoreEvent.Invoke(inputName.text, int.Parse(inputScore.text));
+        EndGame();
+        SceneManager.LoadScene("Test Scene");
     }
 
 }
