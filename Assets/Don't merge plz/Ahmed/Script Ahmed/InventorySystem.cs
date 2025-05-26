@@ -32,12 +32,11 @@ public class InventorySystem : MonoBehaviour
 
 
 
-    private void Awake()
-    {
-        transform.SetParent(null);
-        DontDestroyOnLoad(gameObject);
+    // private void Awake()
+    // {
+        
 
-    }
+    // }
 
 
 
@@ -85,6 +84,7 @@ public class InventorySystem : MonoBehaviour
     void UpdateTimerDisplay()
     {
         TimeSpan time = TimeSpan.FromSeconds(currentTime);
+        Debug.Log(time);
         timerText.text = string.Format("{0:00}:{1:00}", time.Minutes, time.Seconds);
     }
 
@@ -123,10 +123,10 @@ public class InventorySystem : MonoBehaviour
         {
             Currentval--;
            Totalpoints++;
-            if (Currentval % 5 == 0)
-            {
-                SoundManager.PlaySFX(SoundManager.Point);
-            }
+            // if (Currentval % 5 == 0)
+            // {
+            //     SoundManager.PlaySFX(SoundManager.Point);
+            // }
             TotalText.text = "Total: " + Totalpoints;
             yield return new WaitForSeconds(0.01f);
             
@@ -341,17 +341,18 @@ public class InventorySystem : MonoBehaviour
                 pickupPanel.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.E) && InventoryItems.Count != 0)
                 {
-                    FindObjectOfType<ItemManager>().RespawnItems();
+                    // FindObjectOfType<ItemManager>().RespawnItems();
                     currentTime += countTime;
                     Debug.Log(InventoryItems.Count);
-                    Debug.Log(InventoryItems);
-                    SoundManager.Instance.SFXSource.pitch = 1;
+                    Debug.Log(InventoryItems.ToString());
+                    // SoundManager.Instance.SFXSource.pitch = 1;
                     StartCoroutine(ReducePointsOneByOne());
                     StartCoroutine(incrasePointsOneByOne());
 
-                    for (int i = InventoryItems.Count; i >= 0; i--)
+                    for (int i = InventoryItems.Count -1; i >= 0; i--)
                     {
-                        InventoryItems.RemoveAt(0);
+                        Debug.Log("remove :" + i);
+                        InventoryItems.RemoveAt(i);
                     }
 
                 }
@@ -391,6 +392,11 @@ public class InventorySystem : MonoBehaviour
         {
             if (i < InventoryItems.Count && InventoryItems[i] != null)
             {
+                if (InventoryItems[i].itemData == null)
+                {
+                    Debug.LogWarning($"ItemData is null for item at index {i} in InventoryItems.");
+                    continue;
+                }
                 inventorySlotImages[i].sprite = InventoryItems[i].itemData.icon;
                 inventorySlotImages[i].enabled = true;
             }

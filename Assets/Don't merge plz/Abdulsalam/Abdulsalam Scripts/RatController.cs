@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class RatController : MonoBehaviour
 {
+    public static RatController Instance { get; private set; }
     public float walkSpeed = 3f;
     public float runSpeed = 6f;
     public Transform cameraTransform;
@@ -19,6 +20,21 @@ public class RatController : MonoBehaviour
     private Vector3 moveInput;
     private float currentSpeed;
     private bool isRunning;
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            transform.SetParent(null);
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        
+    }
 
     void Start()
     {

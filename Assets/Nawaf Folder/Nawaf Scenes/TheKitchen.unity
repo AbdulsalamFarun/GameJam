@@ -6082,7 +6082,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawn: {fileID: 217589451}
-  player: {fileID: 5082586759243001367, guid: 6a60fc2b48d45c44a848ebb3c81ec9ac, type: 3}
 --- !u!4 &217589453
 Transform:
   m_ObjectHideFlags: 0
@@ -6092,7 +6091,7 @@ Transform:
   m_GameObject: {fileID: 217589451}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1202.7651, y: 938.87, z: -1986.46}
+  m_LocalPosition: {x: -1205.19, y: 941.33, z: -1990.24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
