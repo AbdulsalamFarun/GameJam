@@ -57,7 +57,7 @@ public class AttackState : IEnemyState
         canAttack = false;
 
         // Attack type depends on player's Y position
-        if (player.localPosition.y <= -5f)
+        if (player.localPosition.y <= 941f)
         {
             enemy.animator.SetTrigger("isCrouchAttacking");
             enemy.animator.SetBool("isCrouchChasing", false);

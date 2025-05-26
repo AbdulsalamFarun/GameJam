@@ -78,7 +78,7 @@ public class ChaseState : IEnemyState
         }
 
         
-        if (player.localPosition.y <= -5f)
+        if (player.localPosition.y <= 941f)
         {
             chef.animator.SetBool("isCrouchChasing", true);
             chef.animator.SetBool("isChasing", false);

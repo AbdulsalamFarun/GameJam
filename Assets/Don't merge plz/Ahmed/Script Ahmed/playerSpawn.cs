@@ -8,8 +8,13 @@ public class playerSpawn : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private IEnumerator Start()
     {
+        
         yield return new WaitForSeconds(0.1f); // Wait for 0.1 seconds
         GameObject player = GameObject.FindWithTag("Player");
+        InventorySystem inventory = player.GetComponent<InventorySystem>();
+
+
+        if (inventory.InventoryItems.Count>=1)
         player.GetComponent<RatController>().enabled = false;
         player.GetComponent<Rigidbody>().isKinematic = true; // Disable physics
         if (player != null)

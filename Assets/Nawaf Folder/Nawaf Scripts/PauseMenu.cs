@@ -115,6 +115,6 @@ public void RestartGame()
 public void GoToMainMenu()
 {
     Time.timeScale = 1f;
-    SceneManager.LoadScene("MainMenu"); // Replace with your main menu scene name
+    SceneManager.LoadScene("NawafMainMenu"); // Replace with your main menu scene name
 }
 }
