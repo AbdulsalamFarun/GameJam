@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using NUnit.Framework.Interfaces;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class InventorySystem : MonoBehaviour
@@ -19,7 +20,7 @@ public class InventorySystem : MonoBehaviour
     public GameObject pickupPanel;
     public int Currentpoints;
     public int Totalpoints;
-    public float startTime = 180f;
+    public float startTime = 5f;
     private float currentTime;
     private float countTime;
     public TextMeshProUGUI timerText;
@@ -67,10 +68,12 @@ public class InventorySystem : MonoBehaviour
             currentTime -= Time.deltaTime;
             if (currentTime <= 0)
             {
+                
                 LeaderBoardSaver.Instance.SeetLeaderbordEntry(PlayerPrefs.GetString("Player"), Totalpoints);
+                TimerEnded();
                 currentTime = 0;
                 timerRunning = false;
-                TimerEnded();
+                
             }
 
             UpdateTimerDisplay();
@@ -92,6 +95,7 @@ public class InventorySystem : MonoBehaviour
     void TimerEnded()
     {
         Debug.Log("الوقت انتهى!");
+        SceneManager.LoadScene("FinalLeaderboard");
     }
 
     public void countPoints(ItemData data) {

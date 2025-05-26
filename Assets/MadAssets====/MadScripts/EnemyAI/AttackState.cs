@@ -60,7 +60,7 @@ public class AttackState : IEnemyState
         if (player.localPosition.y <= 941f)
         {
             enemy.animator.SetTrigger("isCrouchAttacking");
-            enemy.animator.SetBool("isCrouchChasing", false);
+            //enemy.animator.SetBool("isCrouchChasing", false);
             Debug.Log("Crouch Attack Triggered");
         }
         else

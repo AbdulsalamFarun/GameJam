@@ -24,7 +24,7 @@ public class SorceMangeScript : MonoBehaviour
     public void SubmitScore()
     {
         EndGame();
-        SceneManager.LoadScene("Test Scene");
+        SceneManager.LoadScene("NawafMainMenu");
     }
 
 }

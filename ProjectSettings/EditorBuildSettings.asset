@@ -6,15 +6,20 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/TextMesh Pro/Examples & Extras/Scenes/26 - Dropdown Placeholder
-      Example.unity
-    guid: ad42ec23f61eac845a9210239faf3446
+    path: Assets/Anas Folder/Anas Senec/Leaderboard_Anas.unity
+    guid: ca18e954aabc7e34b819943efbe30415
+  - enabled: 1
+    path: Assets/Nawaf Folder 1/Nawaf Scenes/NawafMainMenu.unity
+    guid: 304ce043d3d107d40a612fc0b73068a7
   - enabled: 1
     path: Assets/Don't merge plz/Abdulsalam/Abdulsalam Scenes/Test Scene.unity
     guid: cac00613ace01da49aae3ee610aa4339
   - enabled: 1
-    path: Assets/Nawaf Folder/Nawaf Scenes/TheKitchen.unity
-    guid: d3eca2a4c5130384e8688fef957c53cc
+    path: Assets/Nawaf Folder 1/Nawaf Scenes/TheKitchen.unity
+    guid: 36615150484109e42a9c44beecfdcb9c
+  - enabled: 1
+    path: Assets/Anas Folder/Anas Senec/FinalLeaderboard.unity
+    guid: 69aed0e66d4401140bac9f06525453a3
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

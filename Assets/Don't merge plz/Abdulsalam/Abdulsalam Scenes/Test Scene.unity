@@ -2103,8 +2103,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: b59d732288a111f4d931c6615c7cd5b7, type: 3}
-  m_Resource: {fileID: 8300000, guid: b59d732288a111f4d931c6615c7cd5b7, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 9818d8cf90ca3a04ea74bf85f229db0b, type: 3}
+  m_Resource: {fileID: 8300000, guid: 9818d8cf90ca3a04ea74bf85f229db0b, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -32663,7 +32663,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1264407416}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0b564eb820a66f4e88e9615bcff3903, type: 3}
+  m_Script: {fileID: 11500000, guid: 26abe230536c02e449c8572f059c9079, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pausePanel: {fileID: 1802439982}
@@ -37331,6 +37331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d34760894cd9eb4787f7ff2e9e72b2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 5
 --- !u!114 &1469140832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38628,6 +38629,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24e12822eb2192844a9f363616972111, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pausePanel: {fileID: 0}
+  settingsPanel: {fileID: 0}
+  playerController: {fileID: 0}
+  cameraController: {fileID: 0}
 --- !u!1 &1507255774 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8671116810592412039, guid: 188f2d3b02468654ea72a458737145da, type: 3}
@@ -51423,7 +51428,7 @@ MonoBehaviour:
   pickupPanel: {fileID: 1595706105}
   Currentpoints: 0
   Totalpoints: 0
-  startTime: 180
+  startTime: 60
   timerText: {fileID: 1356143740}
   interactableLayer:
     serializedVersion: 2
