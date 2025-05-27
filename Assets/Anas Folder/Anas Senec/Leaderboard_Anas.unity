@@ -13304,6 +13304,7 @@ GameObject:
   - component: {fileID: 484858738}
   - component: {fileID: 484858737}
   - component: {fileID: 484858736}
+  - component: {fileID: 484858740}
   m_Layer: 5
   m_Name: InputField (TMP)
   m_TagString: Untagged
@@ -13472,6 +13473,19 @@ RectTransform:
   m_AnchoredPosition: {x: -150, y: -415}
   m_SizeDelta: {x: 179.28955, y: 40.195007}
   m_Pivot: {x: 0, y: 0.5}
+--- !u!114 &484858740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 484858735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc33a39070010f94fb1c2dd721c1286d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showHtmlElement: 0
 --- !u!1001 &489296093
 PrefabInstance:
   m_ObjectHideFlags: 0

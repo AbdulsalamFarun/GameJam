@@ -9,12 +9,17 @@ public class SpawnManager : MonoBehaviour
     public GameObject streetSpawnAtHole;
     public GameObject streetSpawnAtKitchenDoor;
     public GameObject kitchenSpawnAtKitchenDoor;
+    public GameObject CameraCutScene;
+    public GameObject CameraTransition;
 
     [HideInInspector]
     public string comingFromScene = "";
 
     private void Awake()
     {
+        CameraCutScene = GameObject.Find("Cameras");
+        CameraTransition = GameObject.Find("Camears Transport");
+
         if (Instance == null)
         {
             Instance = this;
@@ -53,20 +58,23 @@ public class SpawnManager : MonoBehaviour
         player.GetComponent<RatController>().enabled = false; // Re-enable physics after setting position
         if (sceneName == "Test Scene")
         {
-            
+
             Debug.Log("Spawning player in Test Scene");
             if (comingFromScene == "NawafMainMenu")
             {
                 player.transform.localPosition = streetSpawnAtHole.transform.localPosition;
-                Debug.Log(streetSpawnAtHole.transform.localPosition);
             }
             else if (comingFromScene == "TheKitchen")
+            {
                 player.transform.position = streetSpawnAtKitchenDoor.transform.position;
+                CameraTransition.gameObject.SetActive(false);
+                CameraCutScene.gameObject.SetActive(false);
+            }
         }
-        else if (sceneName == "TheKitchen")
-        {
-            player.transform.position = kitchenSpawnAtKitchenDoor.transform.position;
-        }
+            else if (sceneName == "TheKitchen")
+            {
+                player.transform.position = kitchenSpawnAtKitchenDoor.transform.position;
+            }
          yield return new WaitForSeconds(0.1f);
         
                         player.GetComponent<Rigidbody>().isKinematic = false;   
