@@ -13,6 +13,8 @@ public class PauseMenu : MonoBehaviour
     public MonoBehaviour cameraController;
     public GameObject gameOverPanel;
 
+    public InventorySystem inventorySystem;
+
     private bool isPaused = false;
 
     void Update()
@@ -96,8 +98,20 @@ public class PauseMenu : MonoBehaviour
 
     public void ExitGame()
     {
+        inventorySystem.currentTime = 4f;
 
-        Application.Quit();
+        isPaused = false;
+        pausePanel.SetActive(false);
+        Time.timeScale = 1f;
+
+        if (playerController != null)
+            playerController.enabled = true;
+
+        if (cameraController != null)
+            cameraController.enabled = true;
+
+        Cursor.lockState = isPaused ? CursorLockMode.None : CursorLockMode.Locked;
+        Cursor.visible = isPaused;            
     }
 
     public void ShowGameOver()
