@@ -8,6 +8,7 @@ public class Exitkitchen : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
+            SpawnManager.Instance.SetComingFrom(SceneManager.GetActiveScene().name);
             SceneManager.LoadScene("Test Scene");
 
         }

@@ -1,8 +1,6 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.Events;
-using UnityEngine.UI;
-using UnityEditor.SearchService;
 using UnityEngine.SceneManagement;
 public class SorceMangeScript : MonoBehaviour
 {
