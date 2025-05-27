@@ -9,17 +9,11 @@ public class SpawnManager : MonoBehaviour
     public GameObject streetSpawnAtHole;
     public GameObject streetSpawnAtKitchenDoor;
     public GameObject kitchenSpawnAtKitchenDoor;
-    public GameObject CameraCutScene;
-    public GameObject CameraTransition;
-
     [HideInInspector]
     public string comingFromScene = "";
 
     private void Awake()
     {
-        CameraCutScene = GameObject.Find("Cameras");
-        CameraTransition = GameObject.Find("Camears Transport");
-
         if (Instance == null)
         {
             Instance = this;
@@ -54,8 +48,8 @@ public class SpawnManager : MonoBehaviour
             Debug.LogWarning("Player not found in scene.");
             yield break;
         }
-        player.GetComponent<Rigidbody>().isKinematic = true; // Temporarily disable physics
-        player.GetComponent<RatController>().enabled = false; // Re-enable physics after setting position
+        player.GetComponent<Rigidbody>().isKinematic = true; 
+        player.GetComponent<RatController>().enabled = false;
         if (sceneName == "Test Scene")
         {
 
@@ -67,8 +61,6 @@ public class SpawnManager : MonoBehaviour
             else if (comingFromScene == "TheKitchen")
             {
                 player.transform.position = streetSpawnAtKitchenDoor.transform.position;
-                CameraTransition.gameObject.SetActive(false);
-                CameraCutScene.gameObject.SetActive(false);
             }
         }
             else if (sceneName == "TheKitchen")
@@ -77,7 +69,7 @@ public class SpawnManager : MonoBehaviour
             }
          yield return new WaitForSeconds(0.1f);
         
-                        player.GetComponent<Rigidbody>().isKinematic = false;   
-                player.GetComponent<RatController>().enabled = true; // Re-enable RatController  
+                player.GetComponent<Rigidbody>().isKinematic = false;   
+                player.GetComponent<RatController>().enabled = true;  
     }
 }
