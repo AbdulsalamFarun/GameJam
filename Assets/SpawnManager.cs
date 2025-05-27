@@ -6,9 +6,9 @@ public class SpawnManager : MonoBehaviour
 {
     public static SpawnManager Instance;
 
-    public Vector3 streetSpawnAtHole;
-    public Vector3 streetSpawnAtKitchenDoor;
-    public Vector3 kitchenSpawnAtKitchenDoor;
+    public GameObject streetSpawnAtHole;
+    public GameObject streetSpawnAtKitchenDoor;
+    public GameObject kitchenSpawnAtKitchenDoor;
 
     [HideInInspector]
     public string comingFromScene = "";
@@ -41,7 +41,7 @@ public class SpawnManager : MonoBehaviour
 
     private IEnumerator DelayedSpawn(string sceneName)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.1f);
 
         GameObject player = GameObject.FindWithTag("Player");
         if (player == null)
@@ -49,18 +49,27 @@ public class SpawnManager : MonoBehaviour
             Debug.LogWarning("Player not found in scene.");
             yield break;
         }
-
+        player.GetComponent<Rigidbody>().isKinematic = true; // Temporarily disable physics
+        player.GetComponent<RatController>().enabled = false; // Re-enable physics after setting position
         if (sceneName == "Test Scene")
         {
+            
             Debug.Log("Spawning player in Test Scene");
             if (comingFromScene == "NawafMainMenu")
-                player.transform.position = streetSpawnAtHole;
+            {
+                player.transform.localPosition = streetSpawnAtHole.transform.localPosition;
+                Debug.Log(streetSpawnAtHole.transform.localPosition);
+            }
             else if (comingFromScene == "TheKitchen")
-                player.transform.position = streetSpawnAtKitchenDoor;
+                player.transform.position = streetSpawnAtKitchenDoor.transform.position;
         }
         else if (sceneName == "TheKitchen")
         {
-            player.transform.position = kitchenSpawnAtKitchenDoor;
+            player.transform.position = kitchenSpawnAtKitchenDoor.transform.position;
         }
+         yield return new WaitForSeconds(0.1f);
+        
+                        player.GetComponent<Rigidbody>().isKinematic = false;   
+                player.GetComponent<RatController>().enabled = true; // Re-enable RatController  
     }
 }

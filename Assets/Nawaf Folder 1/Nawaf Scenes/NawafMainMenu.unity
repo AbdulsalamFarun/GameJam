@@ -24900,9 +24900,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1acc3710990d95b4ba09a943c5334468, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  streetSpawnAtHole: {x: -5.265, y: -20.151, z: 61.676}
-  streetSpawnAtKitchenDoor: {x: -21.87, y: -18.916, z: -14.54}
-  kitchenSpawnAtKitchenDoor: {x: -1204.347, y: 939.629, z: -1986.937}
+  streetSpawnAtHole: {fileID: 5723831236138842812, guid: 445e3eb41a759d5488f124742ba7951e, type: 3}
+  streetSpawnAtKitchenDoor: {fileID: 9198513386597033611, guid: 5d6370860f47314428a8ea22debcf924, type: 3}
+  kitchenSpawnAtKitchenDoor: {fileID: 1394490445684920902, guid: 3d7742955ab09be478150685083e2e17, type: 3}
   comingFromScene: 
 --- !u!4 &1476814595
 Transform:
@@ -24913,7 +24913,7 @@ Transform:
   m_GameObject: {fileID: 1476814593}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2102.293, y: 811.729, z: 418.09937}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
