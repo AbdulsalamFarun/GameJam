@@ -85,6 +85,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 51cc078ec3568484c859511bbcf27cd6, type: 3}
       insertIndex: -1
       addedObject: {fileID: -1223377934161801010}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 51cc078ec3568484c859511bbcf27cd6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -2456501598177973840}
   m_SourcePrefab: {fileID: 100100000, guid: 51cc078ec3568484c859511bbcf27cd6, type: 3}
 --- !u!1 &6316078087653236225 stripped
 GameObject:
@@ -107,7 +110,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: e966ec6167dcd8849b2c04fd81ef6654, type: 3}
   itemType: 3
   value: 10
-  time: 10
+  time: 4
 --- !u!114 &-2063378556623290159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,3 +146,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.56000006, y: 1.2699999, z: 0.55289733}
   m_Center: {x: -0.0000000014436786, y: 0.04997685, z: -0.003551349}
+--- !u!114 &-2456501598177973840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6316078087653236225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 5
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
