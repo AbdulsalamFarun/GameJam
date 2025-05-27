@@ -8,6 +8,7 @@ public class NextSceneKitchen : MonoBehaviour
         
         if (other.CompareTag("Player"))
         {
+            SpawnManager.Instance.SetComingFrom(SceneManager.GetActiveScene().name);
             SceneManager.LoadScene("TheKitchen");
         }
     }

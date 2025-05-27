@@ -7,6 +7,7 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
+        SpawnManager.Instance.SetComingFrom(SceneManager.GetActiveScene().name);
         SceneManager.LoadScene("Test Scene");
     }
 

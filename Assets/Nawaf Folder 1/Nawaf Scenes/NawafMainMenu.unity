@@ -24871,6 +24871,54 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e95745507381bbe4aa6a08ca68c20c8b, type: 3}
   m_PrefabInstance: {fileID: 1476779533}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1476814593
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1476814595}
+  - component: {fileID: 1476814594}
+  m_Layer: 0
+  m_Name: SpawnManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1476814594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1476814593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1acc3710990d95b4ba09a943c5334468, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  streetSpawnAtHole: {x: -5.265, y: -20.151, z: 61.676}
+  streetSpawnAtKitchenDoor: {x: -21.87, y: -18.916, z: -14.54}
+  kitchenSpawnAtKitchenDoor: {x: -1204.347, y: 939.629, z: -1986.937}
+  comingFromScene: 
+--- !u!4 &1476814595
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1476814593}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2102.293, y: 811.729, z: 418.09937}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1477885198
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34816,3 +34864,4 @@ SceneRoots:
   - {fileID: 726159628}
   - {fileID: 516191951}
   - {fileID: 1787358591}
+  - {fileID: 1476814595}

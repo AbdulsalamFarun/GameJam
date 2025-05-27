@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class SpawnManager : MonoBehaviour
 {
@@ -14,40 +15,52 @@ public class SpawnManager : MonoBehaviour
 
     private void Awake()
     {
-        // Singleton pattern so it persists across scenes
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // Keep this object across scenes
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
+            return;
         }
 
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
+    public void SetComingFrom(string sceneName)
+    {
+        comingFromScene = sceneName;
+    }
+
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        GameObject player = GameObject.FindWithTag("Player");
-        if (player == null) return;
+        StartCoroutine(DelayedSpawn(scene.name));
+    }
 
-        if (scene.name == "Test Scene")
+    private IEnumerator DelayedSpawn(string sceneName)
+    {
+        yield return new WaitForSeconds(1f);
+
+        GameObject player = GameObject.FindWithTag("Player");
+        if (player == null)
         {
+            Debug.LogWarning("Player not found in scene.");
+            yield break;
+        }
+
+        if (sceneName == "Test Scene")
+        {
+            Debug.Log("Spawning player in Test Scene");
             if (comingFromScene == "NawafMainMenu")
                 player.transform.position = streetSpawnAtHole;
             else if (comingFromScene == "TheKitchen")
                 player.transform.position = streetSpawnAtKitchenDoor;
         }
-        else if (scene.name == "TheKitchen")
+        else if (sceneName == "TheKitchen")
         {
             player.transform.position = kitchenSpawnAtKitchenDoor;
         }
-    }
-
-    public void SetComingFrom(string sceneName)
-    {
-        comingFromScene = sceneName;
     }
 }

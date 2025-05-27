@@ -88,13 +88,12 @@ public class InventorySystem : MonoBehaviour
     void UpdateTimerDisplay()
     {
         TimeSpan time = TimeSpan.FromSeconds(currentTime);
-        Debug.Log(time);
         timerText.text = string.Format("{0:00}:{1:00}", time.Minutes, time.Seconds);
     }
 
     void TimerEnded()
     {
-        Debug.Log("الوقت انتهى!");
+
         SceneManager.LoadScene("FinalLeaderboard");
     }
 
@@ -148,7 +147,6 @@ public class InventorySystem : MonoBehaviour
         while (Currentpoints > 0)
         {
             Currentpoints--;
-            Debug.Log(Currentpoints);
             CurrentText.text = "Points: " + Currentpoints.ToString(); 
             yield return new WaitForSeconds(0.01f); 
         }
@@ -170,7 +168,6 @@ public class InventorySystem : MonoBehaviour
         }
         InventoryItems.Add(newItem);
 
-        Debug.Log($"{data.itemName} added to inventory.");
         UpdateInventoryUI();
         pickupPanel.SetActive(false);
         take.text = "";
