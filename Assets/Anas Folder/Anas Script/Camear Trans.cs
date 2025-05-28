@@ -11,15 +11,34 @@ public class Cameras : MonoBehaviour
 
     [Header("Player Camera (activates after sequence)")]
     public Camera playerCamera;
+    public GameObject UI;
+    public GameObject player;
+    [HideInInspector] public SpawnManager spawnManager;
+
 
     public void Start()
     {
-        // start the sequence once on game start
-        StartCoroutine(SwitchCamerasOnce());
+        if (SpawnManager.Instance != null)
+        {
+            if (SpawnManager.Instance.comingFromScene == "NawafMainMenu")
+            {
+                UI.SetActive(false);
+
+                Debug.Log("Starting camera sequence...");
+                StartCoroutine(SwitchCamerasOnce());
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 
     private IEnumerator SwitchCamerasOnce()
     {
+        player.GetComponent<InventorySystem>().enabled = false;
+        player.GetComponent<RatController>().enabled = false;
+        player.GetComponent<Rigidbody>().isKinematic = true;
         // disable all sequence cameras and the player camera at first
         foreach (var cam in cameras)
             cam.gameObject.SetActive(false);
@@ -39,5 +58,10 @@ public class Cameras : MonoBehaviour
         {
             playerCamera.gameObject.SetActive(true);
         }
+
+        UI.SetActive(true);
+        player.GetComponent<InventorySystem>().enabled = true;
+        player.GetComponent<RatController>().enabled = true;
+        player.GetComponent<Rigidbody>().isKinematic = false;
     }
 }

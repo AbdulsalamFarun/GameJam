@@ -33,7 +33,7 @@ public class ItemManager : MonoBehaviour
             availablePoints.RemoveAt(pointIndex);
 
             GameObject prefab = itemPrefabs[Random.Range(0, itemPrefabs.Count)];
-            GameObject spawned = Instantiate(prefab, spawnPoint.position, spawnPoint.rotation);
+            GameObject spawned = Instantiate(prefab, spawnPoint.position, prefab.transform.rotation);
             spawnedItems.Add(spawned);
         }
     }

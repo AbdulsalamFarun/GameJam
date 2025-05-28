@@ -46,7 +46,7 @@ public class InventorySystem : MonoBehaviour
     {
         SoundManager = SoundManager.Instance;
 
-        if (SoundManager ==null)
+        if (SoundManager == null)
         {
             Debug.Log("No Sound");
         }
@@ -68,6 +68,7 @@ public class InventorySystem : MonoBehaviour
             currentTime -= Time.deltaTime;
             if (currentTime <= 0)
             {
+                Debug.Log("Timer ended");
 
                 LeaderBoardSaver.Instance.SeetLeaderbordEntry(PlayerPrefs.GetString("Player"), Totalpoints);
 

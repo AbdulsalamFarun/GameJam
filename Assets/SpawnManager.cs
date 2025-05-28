@@ -52,8 +52,6 @@ public class SpawnManager : MonoBehaviour
         player.GetComponent<RatController>().enabled = false;
         if (sceneName == "Test Scene")
         {
-
-            Debug.Log("Spawning player in Test Scene");
             if (comingFromScene == "NawafMainMenu")
             {
                 player.transform.localPosition = streetSpawnAtHole.transform.localPosition;
@@ -67,9 +65,10 @@ public class SpawnManager : MonoBehaviour
             {
                 player.transform.position = kitchenSpawnAtKitchenDoor.transform.position;
             }
+        if (sceneName == "FinalLeaderboard")
+        {
+            player.SetActive(false);
+        }
          yield return new WaitForSeconds(0.1f);
-        
-                player.GetComponent<Rigidbody>().isKinematic = false;   
-                player.GetComponent<RatController>().enabled = true;  
     }
 }
