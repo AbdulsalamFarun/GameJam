@@ -40,7 +40,7 @@ public class SpawnManager : MonoBehaviour
 
     private IEnumerator DelayedSpawn(string sceneName)
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.001f);
 
         GameObject player = GameObject.FindWithTag("Player");
         if (player == null)
@@ -48,27 +48,29 @@ public class SpawnManager : MonoBehaviour
             Debug.LogWarning("Player not found in scene.");
             yield break;
         }
-        player.GetComponent<Rigidbody>().isKinematic = true; 
+        player.GetComponent<Rigidbody>().isKinematic = true;
         player.GetComponent<RatController>().enabled = false;
         if (sceneName == "Test Scene")
         {
             if (comingFromScene == "NawafMainMenu")
             {
-                player.transform.localPosition = streetSpawnAtHole.transform.localPosition;
+                Debug.Log("Coming from main menu");
             }
             else if (comingFromScene == "TheKitchen")
             {
                 player.transform.position = streetSpawnAtKitchenDoor.transform.position;
             }
         }
-            else if (sceneName == "TheKitchen")
-            {
-                player.transform.position = kitchenSpawnAtKitchenDoor.transform.position;
-            }
+        else if (sceneName == "TheKitchen")
+        {
+            player.transform.position = kitchenSpawnAtKitchenDoor.transform.position;
+        }
         if (sceneName == "FinalLeaderboard")
         {
             player.SetActive(false);
         }
-         yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.01f);
+        player.GetComponent<Rigidbody>().isKinematic = false;
+        player.GetComponent<RatController>().enabled = true;
     }
 }

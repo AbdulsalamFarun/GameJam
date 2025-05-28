@@ -36,9 +36,9 @@ public class Cameras : MonoBehaviour
 
     private IEnumerator SwitchCamerasOnce()
     {
+        yield return new WaitForSeconds(0.5f);
         player.GetComponent<InventorySystem>().enabled = false;
         player.GetComponent<RatController>().enabled = false;
-        player.GetComponent<Rigidbody>().isKinematic = true;
         // disable all sequence cameras and the player camera at first
         foreach (var cam in cameras)
             cam.gameObject.SetActive(false);
