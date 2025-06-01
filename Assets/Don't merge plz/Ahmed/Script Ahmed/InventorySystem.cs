@@ -271,7 +271,7 @@ public class InventorySystem : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, 10f, interactableLayer )) 
         {
-            
+
 
             if (hit.collider.CompareTag("Item"))
             {
@@ -353,13 +353,17 @@ public class InventorySystem : MonoBehaviour
                     StartCoroutine(ReducePointsOneByOne());
                     StartCoroutine(incrasePointsOneByOne());
 
-                    for (int i = InventoryItems.Count -1; i >= 0; i--)
+                    for (int i = InventoryItems.Count - 1; i >= 0; i--)
                     {
                         Debug.Log("remove :" + i);
                         InventoryItems.RemoveAt(i);
                     }
+                    countTime = 0;
+
 
                 }
+
+
             }
 
 
